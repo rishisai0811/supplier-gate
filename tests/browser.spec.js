@@ -10,3 +10,23 @@ test('duplicate keys stop matching',async({page})=>{await page.locator('#old-tex
 test('rules import and export',async({page})=>{await page.locator('#demo').click();await page.locator('#policy-file').setInputFiles({name:'rules.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({version:1,keys:['SKU'],allowed:[]}))});await expect(page.locator('#allowed input:checked')).toHaveCount(0);await page.locator('#compare').click();await expect(page.locator('#changes .tag:not(.ok)')).toHaveCount(3);const download=page.waitForEvent('download');await page.locator('#save-policy').click();expect((await download).suggestedFilename()).toBe('supplier-gate-rules.json');});
 test('mobile does not overflow and controls remain usable',async({page})=>{await page.setViewportSize({width:390,height:844});await page.locator('#demo').click();await expect(page.locator('#status')).toContainText('Review required');expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();await page.screenshot({path:'test-results/mobile.png',fullPage:true});});
 test('reset clears data and results',async({page})=>{await page.locator('#demo').click();await expect(page.locator('#results')).toBeVisible();await page.locator('#reset').click();await expect(page.locator('#old-text')).toHaveValue('');await expect(page.locator('#results')).toBeHidden();});
+test('slow file read cannot overwrite newer pasted text or demo',async({page})=>{
+ await page.evaluate(()=>{const original=File.prototype.arrayBuffer;window.pendingReads=[];File.prototype.arrayBuffer=function(){const file=this;return new Promise((resolve,reject)=>window.pendingReads.push(()=>original.call(file).then(resolve,reject)));};});
+ await page.locator('#old-file').setInputFiles({name:'slow.csv',mimeType:'text/csv',buffer:Buffer.from('SKU,P\nold,10')});
+ await page.locator('#old-text').fill('SKU,P\nnew,20');
+ await page.evaluate(()=>window.pendingReads.shift()());
+ await expect(page.locator('#old-text')).toHaveValue('SKU,P\nnew,20');
+ await page.locator('#new-file').setInputFiles({name:'slow.csv',mimeType:'text/csv',buffer:Buffer.from('SKU,P\nold,10')});
+ await page.locator('#demo').click();await expect(page.locator('#results')).toBeVisible();
+ await page.evaluate(()=>window.pendingReads.shift()());
+ await expect(page.locator('#new-text')).toHaveValue(/Blue bowl - renamed/);
+ await expect(page.locator('#results')).toBeVisible();
+});
+test('a completed file read invalidates any interim comparison',async({page})=>{
+ await page.locator('#demo').click();await expect(page.locator('#results')).toBeVisible();
+ await page.evaluate(()=>{const original=File.prototype.arrayBuffer;window.pendingReads=[];File.prototype.arrayBuffer=function(){const file=this;return new Promise((resolve,reject)=>window.pendingReads.push(()=>original.call(file).then(resolve,reject)));};});
+ await page.locator('#new-file').setInputFiles({name:'later.csv',mimeType:'text/csv',buffer:Buffer.from('SKU,Name,Price,Stock\n001,Later,1,1')});
+ await page.locator('#columns').click();await page.locator('#keys input').first().check();await page.locator('#compare').click();await expect(page.locator('#results')).toBeVisible();
+ await page.evaluate(()=>window.pendingReads.shift()());
+ await expect(page.locator('#new-text')).toHaveValue(/Later/);await expect(page.locator('#results')).toBeHidden();await expect(page.locator('#compare')).toBeDisabled();
+});

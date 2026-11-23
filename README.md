@@ -8,6 +8,10 @@ A complete, bounded offline review workflow: compare a trusted export with a pro
 
 ![Desktop review showing a protected product-name change](docs/desktop.png)
 
+## Latest fix
+
+v0.1.1 prevents a slow file read from overwriting newer pasted/demo input, and invalidates interim results when a current file read completes. Covered by two deterministic browser regressions.
+
 ## Run it
 
 1. Download the release ZIP and extract it.
@@ -57,7 +61,7 @@ npm run test:browser
 
 `core.js` contains the strict parser, matching policy and HTML report renderer. `app.js` contains the browser workflow. `template.html` supplies the responsive interface. `node build.js` bundles these into a single self-contained file in `dist/`.
 
-Tests cover quoted/newline fields, all supported delimiters, leading zeros, large numeric-looking strings, malformed CSV, duplicate/empty keys, schema changes, composite-key collisions, HTML injection, 50,000-row comparison and 200 deterministic generated parser cases. Browser tests cover sample and real-input workflows, file decoding, filters, downloads, rules import/export, reset, desktop/mobile layout and no-network operation.
+Tests cover quoted/newline fields, all supported delimiters, leading zeros, large numeric-looking strings, malformed CSV, duplicate/empty keys, schema changes, composite-key collisions, HTML injection, 50,000-row comparison and 200 deterministic generated parser cases. Browser tests include deterministic slow-file-read race regressions and cover sample and real-input workflows, file decoding, filters, downloads, rules import/export, reset, desktop/mobile layout and no-network operation.
 
 Tested automatically in Chromium on Linux. Windows/macOS browsers, Firefox, WebKit and assistive technology have not yet been verified. Do not infer support from a screenshot or the file format alone.
 

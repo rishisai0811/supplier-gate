@@ -84,6 +84,7 @@
 </script><script>'use strict';
 const $=id=>document.getElementById(id),MAX=10*1024*1024;
 let revision=0;
+const readTokens={old:0,new:0};
 let parsed=null,result=null,meta=null,page=0,currentFiles={old:null,new:null};
 const selected=id=>Array.from($(id).querySelectorAll('input:checked')).map(x=>x.value);
 function error(e){$('errors').textContent=e?.message||String(e);}
@@ -132,8 +133,8 @@ function renderChanges(){
  $('page').textContent=`${list.length} changes · Page ${page+1} of ${pages}`;$('prev').disabled=page===0;$('next').disabled=page+1===pages;
 }
 for(const side of ['old','new']){
- $(side+'-file').addEventListener('change',async ev=>{try{invalidateColumns();$('errors').textContent='';const file=ev.target.files[0];if(!file)return;if(file.size>MAX)throw new Error('Each file is limited to 10 MB.');const text=new TextDecoder('utf-8',{fatal:true}).decode(await file.arrayBuffer());$(side+'-text').value=text;currentFiles[side]=file.name;}catch(e){$(side+'-text').value='';currentFiles[side]=null;error(e);}});
- $(side+'-text').addEventListener('input',()=>{currentFiles[side]=null;$(side+'-file').value='';invalidateColumns();});
+ $(side+'-file').addEventListener('change',async ev=>{const token=++readTokens[side];try{invalidateColumns();$('errors').textContent='';const file=ev.target.files[0];if(!file)return;if(file.size>MAX)throw new Error('Each file is limited to 10 MB.');const bytes=await file.arrayBuffer();if(token!==readTokens[side])return;const text=new TextDecoder('utf-8',{fatal:true}).decode(bytes);invalidateColumns();$(side+'-text').value=text;currentFiles[side]=file.name;}catch(e){if(token!==readTokens[side])return;invalidateColumns();$(side+'-text').value='';currentFiles[side]=null;error(e);}});
+ $(side+'-text').addEventListener('input',()=>{readTokens[side]++;currentFiles[side]=null;$(side+'-file').value='';invalidateColumns();});
  $(side+'-delim').addEventListener('change',invalidateColumns);
 }
 $('columns').onclick=()=>{try{loadColumns();}catch(e){invalidateColumns();error(e);}};
@@ -144,6 +145,6 @@ $('policy-file').onchange=async ev=>{try{const f=ev.target.files[0];if(!f)return
 $('html-report').onclick=()=>{if(result)save('supplier-gate-review.html',SupplierGate.report(result,meta),'text/html');};
 $('json-report').onclick=()=>{if(result)save('supplier-gate-review.json',JSON.stringify({meta,...result},null,2),'application/json');};
 $('filter').onchange=$('search').oninput=()=>{page=0;renderChanges();};$('prev').onclick=()=>{page--;renderChanges();};$('next').onclick=()=>{page++;renderChanges();};
-$('reset').onclick=()=>{for(const side of ['old','new']){$(side+'-text').value='';$(side+'-file').value='';$(side+'-delim').value=',';currentFiles[side]=null;}$('errors').textContent='';invalidateColumns();};
-$('demo').onclick=()=>{for(const s of ['old','new']){$(s+'-delim').value=',';$(s+'-file').value='';currentFiles[s]=null;}$('old-text').value='SKU,Name,Price,Stock\n001,Green mug,12.00,24\n002,Blue bowl,18.00,12\n003,Linen towel,9.00,40';$('new-text').value='SKU,Name,Price,Stock\n002,Blue bowl - renamed,18.00,12\n001,Green mug,13.50,19\n004,Glass jar,7.50,30';try{loadColumns({version:1,keys:['SKU'],allowed:['Price','Stock']});$('compare').click();}catch(e){error(e);}};
+$('reset').onclick=()=>{for(const side of ['old','new']){readTokens[side]++;$(side+'-text').value='';$(side+'-file').value='';$(side+'-delim').value=',';currentFiles[side]=null;}$('errors').textContent='';invalidateColumns();};
+$('demo').onclick=()=>{for(const s of ['old','new']){readTokens[s]++;$(s+'-delim').value=',';$(s+'-file').value='';currentFiles[s]=null;}$('old-text').value='SKU,Name,Price,Stock\n001,Green mug,12.00,24\n002,Blue bowl,18.00,12\n003,Linen towel,9.00,40';$('new-text').value='SKU,Name,Price,Stock\n002,Blue bowl - renamed,18.00,12\n001,Green mug,13.50,19\n004,Glass jar,7.50,30';try{loadColumns({version:1,keys:['SKU'],allowed:['Price','Stock']});$('compare').click();}catch(e){error(e);}};
 </script></body></html>
