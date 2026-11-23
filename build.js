@@ -1,0 +1,1 @@
+const fs=require('node:fs');const core=fs.readFileSync('core.js','utf8'),app=fs.readFileSync('app.js','utf8');if(/<\/script/i.test(core+app))throw Error('Unsafe inline script');fs.mkdirSync('dist',{recursive:true});fs.writeFileSync('dist/SupplierGate.html',fs.readFileSync('template.html','utf8').replace('/*CORE*/',core).replace('/*APP*/',app));

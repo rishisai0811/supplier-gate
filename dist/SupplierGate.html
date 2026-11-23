@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'"><title>Supplier Gate | Review the change, not every row</title><style>
+:root{font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#183039;background:#f4f7f6;font-size:16px}*{box-sizing:border-box}body{margin:0}header{background:#102e32;color:#eefaf7;padding:32px max(24px,calc((100vw - 1200px)/2)) 38px}nav{display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{font-weight:800;letter-spacing:-.6px;font-size:22px}.badge{font-size:12px;border:1px solid #597b7a;border-radius:20px;padding:6px 11px}h1{font-size:clamp(30px,4vw,46px);letter-spacing:-1.6px;line-height:1.12;margin:30px 0 14px;max-width:780px}header p{max-width:760px;color:#bad3d0;line-height:1.65;margin:0}main{max-width:1248px;padding:24px;margin:auto}.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:20px}.toolbar p{margin:0;flex:1;font-size:14px;color:#50656b}.button,button{font:inherit;font-size:14px;font-weight:650;border:1px solid #bccdcd;border-radius:7px;background:white;color:#183b40;padding:10px 16px;cursor:pointer}button:hover{background:#eaf4f1}button:disabled{opacity:.45;cursor:not-allowed}button.primary{background:#17675e;color:white;border-color:#17675e}button.primary:hover{background:#10594f}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.card{border:1px solid #d5dfdc;background:white;border-radius:12px;padding:23px;box-shadow:0 2px 3px #102e3205}h2{font-size:20px;letter-spacing:-.5px;margin:0 0 8px}.eyebrow{text-transform:uppercase;letter-spacing:1.4px;font-size:11px;font-weight:800;color:#527d73;margin-bottom:10px}.hint{color:#607478;font-size:13px;line-height:1.6}textarea{width:100%;min-height:135px;font:12px/1.65 ui-monospace,SFMono-Regular,monospace;border:1px solid #c7d7d0;border-radius:6px;padding:12px;resize:vertical;color:#1a3b41;background:#fbfdfc}input[type=file]{width:100%;font-size:13px;margin:12px 0}select,input[type=search]{font:inherit;font-size:14px;padding:8px;border:1px solid #bdceca;border-radius:6px;background:white;max-width:100%}label{font-size:13px;font-weight:600}.source-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0}.rules{margin:20px 0}.rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:20px 0}.checks{display:flex;flex-wrap:wrap;gap:8px}.checks label{display:flex;gap:7px;align-items:center;border:1px solid #d5e1dc;border-radius:6px;padding:8px 11px;font-weight:500;background:#f7faf8}input[type=checkbox]{accent-color:#17675e}#errors{color:#8b302c;background:#fff0ed;border:1px solid #edc5c0;border-radius:8px;padding:16px;white-space:pre-wrap;margin:20px 0}#errors:empty{display:none}.status{padding:20px;border-radius:9px;background:#fff4de;border:1px solid #ead4a0;margin-bottom:20px}.status.good{background:#e8f5ed;border-color:#abd6be}.status h2{margin-bottom:5px}.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:20px 0}.stat{border:1px solid #d6e0dc;border-radius:8px;background:white;padding:16px}.stat strong{display:block;font-size:28px;letter-spacing:-1px;margin-bottom:5px}.stat span{font-size:12px;color:#627676}table{border-collapse:collapse;width:100%;min-width:680px;font-size:13px}th,td{text-align:left;padding:13px 12px;border-bottom:1px solid #dfE7e3;vertical-align:top;white-space:pre-wrap;overflow-wrap:anywhere;max-width:270px}th{font-size:11px;letter-spacing:.4px;text-transform:uppercase;color:#5b7373;background:#f2f7f4}.table-wrap{overflow:auto}td code{font-family:ui-monospace,monospace;font-size:12px}.tag{font-size:11px;border-radius:5px;padding:4px 7px;display:inline-block;background:#fbe8d3;color:#8c4a0d}.tag.ok{background:#e1f1e9;color:#236548}.section-row{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin:25px 0 12px}.pager{display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-top:16px;font-size:13px}footer{max-width:1200px;margin:25px auto 35px;padding:0 24px;color:#607578;font-size:12px;line-height:1.8}summary{cursor:pointer;font-size:13px;font-weight:600}pre{font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #539d94;outline-offset:3px}#results[hidden]{display:none}@media(max-width:700px){.grid,.rule-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}header{padding:22px}main{padding:16px}.card{padding:18px}.badge{font-size:10px}.toolbar{gap:8px}}
+</style></head><body><header><nav><div class="brand">▥ Supplier Gate</div><span class="badge">LOCAL ONLY · NO ACCOUNT</span></nav><h1>Review the change.<br>Not every row.</h1><p>Compare a supplier's new CSV with your last export. Allow price and stock edits, then catch unexpected changes before you import. Your files never leave this browser.</p></header><main><div class="toolbar"><p>Nothing connects to your store. Nothing overwrites your files.</p><button id="demo">Try a sample review</button><button id="reset">Clear files</button></div><div class="grid"><section class="card"><div class="eyebrow">01 / Before</div><h2>Baseline file</h2><p class="hint">The last trusted export. UTF-8 text, up to 10 MB per file.</p><input id="old-file" type="file" accept=".csv,.tsv,.txt" aria-label="Choose baseline CSV"><div class="source-controls"><label for="old-delim">Separator</label><select id="old-delim"><option value=",">Comma</option><option value=";">Semicolon</option><option value="tab">Tab</option><option value="|">Pipe</option></select></div><label for="old-text">Or paste baseline CSV</label><textarea id="old-text" spellcheck="false" placeholder="SKU,Name,Price,Stock"></textarea></section><section class="card"><div class="eyebrow">02 / After</div><h2>Candidate file</h2><p class="hint">The proposed update. This app reviews it, never imports it.</p><input id="new-file" type="file" accept=".csv,.tsv,.txt" aria-label="Choose candidate CSV"><div class="source-controls"><label for="new-delim">Separator</label><select id="new-delim"><option value=",">Comma</option><option value=";">Semicolon</option><option value="tab">Tab</option><option value="|">Pipe</option></select></div><label for="new-text">Or paste candidate CSV</label><textarea id="new-text" spellcheck="false" placeholder="SKU,Name,Price,Stock"></textarea></section></div><div id="errors" role="alert"></div><section class="card rules"><div class="eyebrow">03 / Your rules</div><h2>What is allowed to change?</h2><p class="hint">Load the columns, choose a stable unique key, then allow only expected edits. Everything else stays protected. Keys are exact text, so 001 and 1 are different.</p><div class="toolbar"><button id="columns">Load columns</button><button id="import-policy">Import rules JSON</button><input type="file" id="policy-file" accept=".json" hidden></div><div class="rule-grid"><div><h3 style="font-size:14px">Match rows using</h3><div id="keys" class="checks"><span class="hint">Load both files to select columns.</span></div></div><div><h3 style="font-size:14px">Allow edits to</h3><div id="allowed" class="checks"><span class="hint">All fields are protected by default.</span></div></div></div><div class="toolbar"><button id="compare" class="primary" disabled>Review changes</button><button id="save-policy" disabled>Save rules JSON</button><span class="hint">Blank or duplicate keys stop matching. Added and removed keys require review.</span></div></section><section id="results" hidden aria-live="polite"><div id="status" class="status"></div><div id="stats" class="stats"></div><div class="toolbar"><button id="html-report">Download HTML report</button><button id="json-report">Download JSON report</button><span class="hint">Reports contain your file data. Share them carefully.</span></div><section class="card"><div class="section-row"><h2>Field changes</h2><div><label for="filter">Show </label><select id="filter"><option value="all">All changes</option><option value="protected">Protected only</option><option value="allowed">Allowed only</option></select> <input id="search" type="search" aria-label="Search changes" placeholder="Search key or value"></div></div><div class="table-wrap"><table><thead><tr><th>Key</th><th>Column</th><th>Before</th><th>After</th><th>Rule</th></tr></thead><tbody id="changes"></tbody></table></div><div class="pager"><button id="prev">Previous</button><span id="page"></span><button id="next">Next</button></div><details style="margin-top:20px"><summary>Blocking issues, additions and removals</summary><pre id="details"></pre></details></section></section><details class="card" style="margin-top:20px"><summary>What this review does and doesn't prove</summary><p class="hint">This is an exact text comparison, not a store-specific validator or a promise that an import is safe. It does not validate prices, tax rules, stock quantities, product URLs or required platform fields. Reordered rows and columns are matched by header and selected key. Column additions or removals always require review. A changed key is shown as a removal plus addition. Whitespace, leading zeros and numeric formatting are not normalized. Malformed quotes, unequal row widths, empty headers and duplicate headers are rejected rather than guessed. Empty physical lines are not silently discarded.</p><p class="hint">Only UTF-8 is supported, with or without BOM. Maximum 10 MB per file and 50,000 data rows. Everything runs in memory. Close or reload to erase the session. No storage, analytics, network requests, AI, payments or store access. Downloaded reports stay wherever you save them. Keep an original export and use your platform's preview or staging environment before a live import.</p></details></main><footer>Supplier Gate · A focused source-available review tool. No claim of platform affiliation. No money or account setup required.</footer><script>'use strict';
+(function(root){
+  class CsvError extends Error { constructor(message,line){super(`${message} (line ${line})`);this.name='CsvError';this.line=line;} }
+  function parse(text,delimiter=',') {
+    if(typeof text!=='string') throw new Error('CSV input must be text.');
+    if(![',',';','\t','|'].includes(delimiter)) throw new Error('Choose a supported delimiter.');
+    if(text.charCodeAt(0)===0xFEFF) text=text.slice(1);
+    if(text.includes('\0')||text.includes('\uFFFD')) throw new Error('Unsupported encoding or binary content. Re-export as UTF-8.');
+    if(!text.length) throw new Error('The file is empty.');
+    let rows=[],row=[],cell='',state='start',line=1,start=1,ended=false;
+    function field(){row.push(cell);cell='';state='start';}
+    function record(){field();rows.push({cells:row,line:start});row=[];start=line+1;ended=true;}
+    for(let i=0;i<text.length;i++) {
+      const c=text[i];ended=false;
+      if(state==='quoted') {
+        if(c==='"'){ if(text[i+1]==='"'){cell+='"';i++;}else state='closed'; }
+        else {cell+=c;if(c==='\n')line++;else if(c==='\r'){if(text[i+1]==='\n'){cell+='\n';i++;}line++;}}
+      } else if(c===delimiter){field();}
+      else if(c==='\n'||c==='\r') {record();if(c==='\r'&&text[i+1]==='\n')i++;line++;}
+      else if(c==='"'){if(state!=='start')throw new CsvError('Unexpected quote in an unquoted field',line);state='quoted';}
+      else {if(state==='closed')throw new CsvError('Unexpected text after a closing quote',line);cell+=c;state='plain';}
+    }
+    if(state==='quoted')throw new CsvError('Unclosed quoted field',start);
+    if(!ended) {field();rows.push({cells:row,line:start});}
+    if(!rows.length)throw new Error('The file has no records.');
+    const headers=rows.shift().cells;
+    if(headers.some(h=>!h.trim()))throw new Error('Every column needs a non-empty header.');
+    if(new Set(headers).size!==headers.length)throw new Error('Duplicate column headers are ambiguous. Rename them at the source.');
+    for(const r of rows)if(r.cells.length!==headers.length)throw new CsvError(`Expected ${headers.length} fields, found ${r.cells.length}`,r.line);
+    return {headers,rows};
+  }
+  function compare(oldData,newData,options) {
+    const keys=options.keys||[],allowed=options.allowed||[];
+    if(!keys.length)throw new Error('Choose at least one stable key column.');
+    if(new Set(keys).size!==keys.length)throw new Error('Key columns must be unique.');
+    const oldH=oldData.headers,newH=newData.headers;
+    for(const h of [...keys,...allowed])if(!oldH.includes(h)||!newH.includes(h))throw new Error(`Column missing from one file: ${h}`);
+    if(keys.some(k=>allowed.includes(k)))throw new Error('Key columns cannot be allowed to change.');
+    const issues=[],changes=[],added=[],removed=[];
+    const missingColumns=oldH.filter(h=>!newH.includes(h)),extraColumns=newH.filter(h=>!oldH.includes(h));
+    if(missingColumns.length||extraColumns.length)issues.push({type:'schema',message:'Column set changed',missing:missingColumns,extra:extraColumns});
+    function index(data,side){
+      const ix=new Map();
+      for(const r of data.rows){
+        const values=keys.map(k=>r.cells[data.headers.indexOf(k)]);
+        if(values.some(v=>v.trim()==='')){issues.push({type:'empty-key',side,line:r.line,message:'Empty key value'});continue;}
+        const key=JSON.stringify(values);
+        if(ix.has(key)){issues.push({type:'duplicate-key',side,key:values,line:r.line,firstLine:ix.get(key).line,message:'Duplicate key'});}
+        else ix.set(key,{...r,key:values});
+      }
+      return ix;
+    }
+    const before=index(oldData,'baseline'),after=index(newData,'candidate');
+    // Never report a potentially misleading row match when keys are ambiguous.
+    const ambiguous=issues.some(i=>i.type==='duplicate-key'||i.type==='empty-key');
+    if(!ambiguous){
+      for(const [k,r] of before){
+        const n=after.get(k);
+        if(!n){removed.push({key:r.key,line:r.line});continue;}
+        for(const h of oldH){
+          if(!newH.includes(h)||keys.includes(h))continue;
+          const a=r.cells[oldH.indexOf(h)],b=n.cells[newH.indexOf(h)];
+          if(a!==b)changes.push({key:r.key,column:h,before:a,after:b,allowed:allowed.includes(h),baselineLine:r.line,candidateLine:n.line});
+        }
+      }
+      for(const [k,r] of after)if(!before.has(k))added.push({key:r.key,line:r.line});
+    }
+    const protectedCount=changes.filter(c=>!c.allowed).length;
+    const blocked=!!issues.length||!!protectedCount||!!added.length||!!removed.length;
+    return {version:1,status:blocked?'REVIEW REQUIRED':'WITHIN SELECTED RULES',keys:[...keys],allowed:[...allowed],counts:{baseline:oldData.rows.length,candidate:newData.rows.length,changed:changes.length,protected:protectedCount,added:added.length,removed:removed.length},issues,changes,added,removed,ambiguous};
+  }
+  function escapeHtml(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function report(result,meta={}) {
+    const e=escapeHtml;
+    return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Supplier Gate review</title><style>body{font:16px system-ui;max-width:1100px;margin:40px auto;padding:20px;color:#172a36}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #ccd6dd;padding:10px;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere}th{background:#edf3f5}h1{font-size:30px}code{overflow-wrap:anywhere} @media print{body{margin:0}tr{break-inside:avoid}}</style><h1>Supplier Gate: ${e(result.status)}</h1><p>This checks selected rules, not business correctness or permission to import. No store was changed.</p><p>Baseline: ${e(meta.baseline||'not recorded')}<br>Candidate: ${e(meta.candidate||'not recorded')}<br>Baseline SHA-256: <code>${e(meta.baselineHash||'not recorded')}</code><br>Candidate SHA-256: <code>${e(meta.candidateHash||'not recorded')}</code></p><p>Keys: ${e(result.keys.join(', '))}. Allowed edits: ${e(result.allowed.join(', ')||'none')}.</p><pre>${e(JSON.stringify(result.counts,null,2))}</pre><p>Hash scope: ${e(meta.hashScope||'not recorded')}</p><h2>Blocking issues</h2><pre>${e(JSON.stringify(result.issues,null,2))}</pre><h2>Field changes</h2><table><tr><th>Key</th><th>Column</th><th>Before</th><th>After</th><th>Rule</th><th>Lines (old/new)</th></tr>${result.changes.map(c=>`<tr><td>${e(JSON.stringify(c.key))}</td><td>${e(c.column)}</td><td>${e(c.before)}</td><td>${e(c.after)}</td><td>${c.allowed?'Allowed':'Protected'}</td><td>${c.baselineLine}/${c.candidateLine}</td></tr>`).join('')}</table><h2>Added keys</h2><pre>${e(JSON.stringify(result.added,null,2))}</pre><h2>Removed keys</h2><pre>${e(JSON.stringify(result.removed,null,2))}</pre><p>Strings are compared exactly. No trimming, numeric conversion, guessing or repair. If a key changes it appears as removal plus addition. Duplicate or empty keys stop matching.</p></html>`;
+  }
+  const api={parse,compare,report,escapeHtml};
+  if(typeof module!=='undefined')module.exports=api;
+  root.SupplierGate=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+</script><script>'use strict';
+const $=id=>document.getElementById(id),MAX=10*1024*1024;
+let revision=0;
+let parsed=null,result=null,meta=null,page=0,currentFiles={old:null,new:null};
+const selected=id=>Array.from($(id).querySelectorAll('input:checked')).map(x=>x.value);
+function error(e){$('errors').textContent=e?.message||String(e);}
+function invalidate(){revision++;result=null;$('results').hidden=true;}
+function invalidateColumns(){invalidate();parsed=null;$('compare').disabled=true;$('save-policy').disabled=true;$('keys').replaceChildren();$('allowed').replaceChildren();}
+function delim(side){return $(side+'-delim').value==='tab'?'\t':$(side+'-delim').value;}
+function readData(){
+ const values={};
+ for(const side of ['old','new']){
+  const text=$(side+'-text').value;
+  if(new TextEncoder().encode(text).length>MAX)throw new Error('Each file is limited to 10 MB.');
+  values[side]=SupplierGate.parse(text,delim(side));
+  if(values[side].rows.length>50000)throw new Error('Each file is limited to 50,000 data rows.');
+ }
+ return values;
+}
+function loadColumns(policy){
+ $('errors').textContent='';invalidate();parsed=readData();
+ const common=parsed.old.headers.filter(h=>parsed.new.headers.includes(h));
+ if(!common.length)throw new Error('The files share no column names.');
+ if(policy){
+  if(policy.version!==1||!Array.isArray(policy.keys)||!Array.isArray(policy.allowed)||[...policy.keys,...policy.allowed].some(x=>typeof x!=='string'||!common.includes(x))||policy.keys.some(k=>policy.allowed.includes(k)))throw new Error('Rules do not match these files. Load columns and choose them again.');
+ }
+ for(const id of ['keys','allowed']){
+  $(id).replaceChildren();
+  for(const h of common){const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.value=h;input.checked=policy?policy[id].includes(h):false;input.addEventListener('change',()=>{if(id==='keys'&&input.checked){for(const x of $('allowed').querySelectorAll('input'))if(x.value===h)x.checked=false;}invalidate();});label.append(input,document.createTextNode(h));$(id).append(label);}
+ }
+ $('compare').disabled=false;$('save-policy').disabled=false;
+}
+function save(name,body,type){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([body],{type}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+function rules(){return {version:1,keys:selected('keys'),allowed:selected('allowed')};}
+async function hash(text){if(!globalThis.crypto?.subtle)return 'Unavailable in this browser context';const buffer=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));return Array.from(new Uint8Array(buffer)).map(b=>b.toString(16).padStart(2,'0')).join('');}
+function showResult(){
+ $('results').hidden=false;const s=$('status');s.replaceChildren();s.className='status'+(result.status==='WITHIN SELECTED RULES'?' good':'');
+ const h=document.createElement('h2');h.textContent=result.status==='WITHIN SELECTED RULES'?'Within your selected rules':'Review required';
+ const p=document.createElement('p');p.style.margin='0';p.className='hint';p.textContent=result.ambiguous?'Row matching stopped: resolve empty or duplicate keys first.':result.status==='WITHIN SELECTED RULES'?'No protected fields, keys or column sets changed. This is not approval to import.':'Protected changes, added or removed keys, or structural issues need attention.';s.append(h,p);
+ $('stats').replaceChildren();for(const [n,v] of [['Rows before',result.counts.baseline],['Field changes',result.counts.changed],['Protected edits',result.counts.protected],['Added keys',result.counts.added],['Removed keys',result.counts.removed]]){const d=document.createElement('div');d.className='stat';const value=document.createElement('strong'),label=document.createElement('span');value.textContent=v;label.textContent=n;d.append(value,label);$('stats').append(d);}
+ $('details').textContent=JSON.stringify({issues:result.issues,added:result.added,removed:result.removed},null,2);page=0;renderChanges();
+}
+function renderChanges(){
+ if(!result)return;const q=$('search').value.toLocaleLowerCase(),f=$('filter').value;
+ const list=result.changes.filter(c=>(f==='all'||c.allowed===(f==='allowed'))&&(!q||JSON.stringify(c).toLocaleLowerCase().includes(q)));
+ const pages=Math.max(1,Math.ceil(list.length/50));page=Math.max(0,Math.min(page,pages-1));$('changes').replaceChildren();
+ for(const c of list.slice(page*50,page*50+50)){const tr=document.createElement('tr');for(const value of [JSON.stringify(c.key),c.column,c.before,c.after]){const td=document.createElement('td');td.textContent=value;tr.append(td);}const td=document.createElement('td'),tag=document.createElement('span');tag.textContent=c.allowed?'Allowed':'Protected';tag.className='tag'+(c.allowed?' ok':'');td.append(tag);tr.append(td);$('changes').append(tr);}
+ if(!list.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=5;td.textContent=result.ambiguous?'No matches computed until key issues are fixed.':'No field changes match this view.';tr.append(td);$('changes').append(tr);}
+ $('page').textContent=`${list.length} changes · Page ${page+1} of ${pages}`;$('prev').disabled=page===0;$('next').disabled=page+1===pages;
+}
+for(const side of ['old','new']){
+ $(side+'-file').addEventListener('change',async ev=>{try{invalidateColumns();$('errors').textContent='';const file=ev.target.files[0];if(!file)return;if(file.size>MAX)throw new Error('Each file is limited to 10 MB.');const text=new TextDecoder('utf-8',{fatal:true}).decode(await file.arrayBuffer());$(side+'-text').value=text;currentFiles[side]=file.name;}catch(e){$(side+'-text').value='';currentFiles[side]=null;error(e);}});
+ $(side+'-text').addEventListener('input',()=>{currentFiles[side]=null;$(side+'-file').value='';invalidateColumns();});
+ $(side+'-delim').addEventListener('change',invalidateColumns);
+}
+$('columns').onclick=()=>{try{loadColumns();}catch(e){invalidateColumns();error(e);}};
+$('compare').onclick=async()=>{try{$('errors').textContent='';const runRevision=revision;const data=readData();const nextResult=SupplierGate.compare(data.old,data.new,rules());const nextMeta={baseline:currentFiles.old||'Pasted baseline',candidate:currentFiles.new||'Pasted candidate',hashScope:'SHA-256 of UTF-8 text after browser newline/BOM decoding, not source-file bytes',baselineHash:await hash($('old-text').value),candidateHash:await hash($('new-text').value)};if(runRevision!==revision)return;result=nextResult;meta=nextMeta;showResult();}catch(e){invalidate();error(e);}};
+$('save-policy').onclick=()=>{try{const p=rules();if(!p.keys.length)throw new Error('Select a key before saving rules.');if(p.keys.some(k=>p.allowed.includes(k)))throw new Error('A key cannot be editable.');save('supplier-gate-rules.json',JSON.stringify(p,null,2),'application/json');}catch(e){error(e);}};
+$('import-policy').onclick=()=>$('policy-file').click();
+$('policy-file').onchange=async ev=>{try{const f=ev.target.files[0];if(!f)return;if(f.size>100000)throw new Error('Rules file too large.');loadColumns(JSON.parse(await f.text()));}catch(e){invalidateColumns();error(e);}finally{ev.target.value='';}};
+$('html-report').onclick=()=>{if(result)save('supplier-gate-review.html',SupplierGate.report(result,meta),'text/html');};
+$('json-report').onclick=()=>{if(result)save('supplier-gate-review.json',JSON.stringify({meta,...result},null,2),'application/json');};
+$('filter').onchange=$('search').oninput=()=>{page=0;renderChanges();};$('prev').onclick=()=>{page--;renderChanges();};$('next').onclick=()=>{page++;renderChanges();};
+$('reset').onclick=()=>{for(const side of ['old','new']){$(side+'-text').value='';$(side+'-file').value='';$(side+'-delim').value=',';currentFiles[side]=null;}$('errors').textContent='';invalidateColumns();};
+$('demo').onclick=()=>{for(const s of ['old','new']){$(s+'-delim').value=',';$(s+'-file').value='';currentFiles[s]=null;}$('old-text').value='SKU,Name,Price,Stock\n001,Green mug,12.00,24\n002,Blue bowl,18.00,12\n003,Linen towel,9.00,40';$('new-text').value='SKU,Name,Price,Stock\n002,Blue bowl - renamed,18.00,12\n001,Green mug,13.50,19\n004,Glass jar,7.50,30';try{loadColumns({version:1,keys:['SKU'],allowed:['Price','Stock']});$('compare').click();}catch(e){error(e);}};
+</script></body></html>
